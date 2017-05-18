@@ -52,6 +52,7 @@ public class DocumentServiceImpl implements DocumentService{
 	}
 	
 	public void saveDocument(Document document,MultipartFile file) {
+		if(file==null)return;
 		document.setId(counter.incrementAndGet());
 		Path currentRelativePath = Paths.get("");
 		String path=currentRelativePath.toAbsolutePath().normalize().toString()+"/"+document.getPath();
@@ -110,12 +111,12 @@ public class DocumentServiceImpl implements DocumentService{
 
 	private static List<Document> populateDummyDocuments(){
 		List<Document> Documents = new ArrayList<Document>();
-		/*
+		
 		Documents.add(new Document(counter.incrementAndGet(),"Doc01.pdf","/opt/data/2017/5/16/10/10/10", "johnd","2017-05-16 10:10:10"));
 		Documents.add(new Document(counter.incrementAndGet(),"Doc02.pdf","/opt/data/2017/5/16/10/10/15", "maryc","2017-05-16 10:10:15"));
 		Documents.add(new Document(counter.incrementAndGet(),"Doc03.pdf","/opt/data/2017/5/16/10/10/20", "joshb","2017-05-16 10:10:20"));
 		Documents.add(new Document(counter.incrementAndGet(),"Doc04.pdf","/opt/data/2017/5/16/10/10/25", "alicel","2017-05-16 10:10:25"));
-		*/
+		
 		return Documents;
 	}
 
